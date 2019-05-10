@@ -47,3 +47,5 @@ Using `combineReducers` allows me to separate my store's state into individual s
         }
     } 
 ``` 
+
+Link to Redux docs: https://redux.js.org/recipes/structuring-reducers/using-combinereducers
