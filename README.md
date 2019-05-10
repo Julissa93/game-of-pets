@@ -14,17 +14,36 @@ initialState = {
 ```
 Using `combineReducers` allows me to separate my store's state into individual slices, so instead of having one reducer file that handles everything about users and items, I can make a user reducer and an items reducer :)
 ```javascript
-    // In my UserReducer
+    // ------ In my UserReducer.js ------
     initialState = {
         users: [], 
         selectedUser: {}
     }
+
+    const reducer = (state = initialState, action) => {
+        switch(action.type) {
+            case GET_USERS: 
+                return {...state, users: action.payload}
+            /* More cases can be added here, but omitted for brevity */
+            default:
+                return state;
+        }
+    } 
 ``` 
 
 ```javascript
-    // In my ItemsReducer
+    // ----- In my ItemsReducer.js -----
     initialState = {
         items: [], 
         selectedItem: {}
     }
+    const reducer = (state = initialState, action) => {
+        switch(action.type) {
+            case GET_ITEMS: 
+                return {...state, items: action.payload}
+            /* More cases can be added here, but omitted for brevity */
+            default:
+                return state;
+        }
+    } 
 ``` 
