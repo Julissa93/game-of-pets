@@ -8,10 +8,10 @@ export default class Main extends React.Component {
     return (
         <Router>
         <center>
-          <h1>Game of Pets </h1>
+          <h1>🎉 Game of Pets 🎉</h1>
           <p>
-            "When you play the game of pets, you win or you die... of all the
-            cuteness ;)" - Cersei Lannister
+            "When you play the game of pets, you win or you die... of
+            cuteness." - 👸 Cersei Lannister
           </p>
           
             <Link to="/dragons">Show us the dragons!</Link>

@@ -38640,12 +38640,12 @@ var Main = function (_React$Component) {
           _react2.default.createElement(
             "h1",
             null,
-            "Game of Pets "
+            "\uD83C\uDF89 Game of Pets \uD83C\uDF89"
           ),
           _react2.default.createElement(
             "p",
             null,
-            "\"When you play the game of pets, you win or you die... of all the cuteness ;)\" - Cersei Lannister"
+            "\"When you play the game of pets, you win or you die... of cuteness.\" - \uD83D\uDC78 Cersei Lannister"
           ),
           _react2.default.createElement(
             _reactRouterDom.Link,
