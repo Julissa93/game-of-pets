@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class AllDragons extends React.Component {
 
   async componentDidMount() {
-    const {data} = await axios.get('/api/dragons');
+    const { data } = await axios.get('/api/dragons');
     this.props.getDragons(data);
   }
 
@@ -17,7 +17,7 @@ class AllDragons extends React.Component {
         <ul>
           {dragons.map(dragon => (
             <li key={dragon.id}>
-              <h2>Dragon: {dragon.name}</h2>
+              <h2>🐉 Dragon: {dragon.name} 🐉</h2>
               <img src={dragon.imageUrl} height="400" width="600" />
             </li>
           ))}

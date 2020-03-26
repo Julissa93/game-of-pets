@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
 import { getWolves } from './store'
 import axios from "axios";
+import { connect } from "react-redux";
 
 class AllWolves extends React.Component {
 
@@ -17,7 +17,7 @@ class AllWolves extends React.Component {
         <ul>
           {wolves.map(wolf => (
             <li key={wolf.id}>
-              <h2>Direwolf: {wolf.name}</h2>
+              <h2>🐺 Direwolf: {wolf.name} 🐺</h2>
               <img src={wolf.imageUrl} height="400" width="600" />
             </li>
           ))}

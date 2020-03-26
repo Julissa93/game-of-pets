@@ -6,7 +6,6 @@ import AllWolves from "./AllWolves";
 export default class Main extends React.Component {
   render() {
     return (
-      
         <Router>
         <center>
           <h1>Game of Pets </h1>
@@ -26,7 +25,6 @@ export default class Main extends React.Component {
           </Switch>
         </center>
         </Router>
-
     );
   }
 }

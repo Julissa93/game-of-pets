@@ -41002,8 +41002,9 @@ var AllDragons = function (_React$Component) {
               _react2.default.createElement(
                 'h2',
                 null,
-                'Dragon: ',
-                dragon.name
+                '\uD83D\uDC09 Dragon: ',
+                dragon.name,
+                ' \uD83D\uDC09'
               ),
               _react2.default.createElement('img', { src: dragon.imageUrl, height: '400', width: '600' })
             );
@@ -42704,13 +42705,13 @@ var _react = __webpack_require__(15);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(109);
-
 var _store = __webpack_require__(107);
 
 var _axios = __webpack_require__(152);
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _reactRedux = __webpack_require__(109);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42782,8 +42783,9 @@ var AllWolves = function (_React$Component) {
               _react2.default.createElement(
                 "h2",
                 null,
-                "Direwolf: ",
-                wolf.name
+                "\uD83D\uDC3A Direwolf: ",
+                wolf.name,
+                " \uD83D\uDC3A"
               ),
               _react2.default.createElement("img", { src: wolf.imageUrl, height: "400", width: "600" })
             );
