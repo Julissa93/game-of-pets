@@ -38655,7 +38655,7 @@ var Main = function (_React$Component) {
           _react2.default.createElement("br", null),
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: "/direwolves" },
+            { to: "/wolves" },
             "Show us the direwolves!"
           ),
           _react2.default.createElement(
@@ -38663,7 +38663,7 @@ var Main = function (_React$Component) {
             null,
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _AllDragons2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dragons", component: _AllDragons2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/direwolves", component: _AllWolves2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/wolves", component: _AllWolves2.default })
           )
         )
       );

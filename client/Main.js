@@ -17,12 +17,12 @@ export default class Main extends React.Component {
           
             <Link to="/dragons">Show us the dragons!</Link>
             <br />
-            <Link to="/direwolves">Show us the direwolves!</Link>
+            <Link to="/wolves">Show us the direwolves!</Link>
           
           <Switch>
             <Route exact path="/" component={AllDragons} />
             <Route exact path="/dragons" component={AllDragons} />
-            <Route exact path="/direwolves" component={AllWolves} />
+            <Route exact path="/wolves" component={AllWolves} />
           </Switch>
         </center>
         </Router>
