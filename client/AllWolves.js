@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchDirewolves } from "./reducers/direwolfReducer";
+import { getWolves } from './store'
+import axios from "axios";
 
 class AllWolves extends React.Component {
 
- componentDidMount() {
-    this.props.fetchDirewolves();
+  async componentDidMount() {
+    const { data } = await axios.get('/api/wolves');
+    this.props.getWolves(data);
   }
 
   render() {
-    let wolves = this.props.direwolves;
-    if (this.props.loading) return <h1>...Loading!!!</h1>
+    const { wolves } = this.props;
     return (
       <div>
         <ul>
@@ -26,20 +27,12 @@ class AllWolves extends React.Component {
   }
 }
 
-const mapState = state => {
-  return {
-    direwolves: state.direwolves.all,
-    loading: state.direwolves.loading
-  };
-};
+const mapStateToProps = state => ({
+  wolves: state.wolves
+})
 
-const mapDispatch = dispatch => {
-  return {
-    fetchDirewolves: () => dispatch(fetchDirewolves())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getWolves: (wolves) => dispatch(getWolves(wolves))
+})
 
-export default connect(
-  mapState,
-  mapDispatch
-)(AllWolves);
+export default connect(mapStateToProps, mapDispatchToProps)(AllWolves);

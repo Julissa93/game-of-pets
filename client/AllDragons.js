@@ -1,16 +1,17 @@
 import React from "react";
+import { getDragons } from './store';
+import axios from 'axios';
 import { connect } from "react-redux";
-import { fetchDragons } from "./reducers/dragonReducer";
 
 class AllDragons extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchDragons();
+  async componentDidMount() {
+    const {data} = await axios.get('/api/dragons');
+    this.props.getDragons(data);
   }
 
   render() {
-    let dragons = this.props.dragons;
-    if (this.props.loading) return <h1>...Loading!!!</h1>
+    const { dragons } = this.props;
     return (
       <div>
         <ul>
@@ -26,19 +27,12 @@ class AllDragons extends React.Component {
   }
 }
 
-const mapState = state => {
-  console.log('STATE: ', state);
-  return {
-    dragons: state.dragons.all,
-    loading: state.dragons.loading
-  };
-};
+const mapStateToProps = (state) => ({
+  dragons: state.dragons
+})
 
-const mapDispatch = dispatch => ({
-  fetchDragons: () => dispatch(fetchDragons())
-});
+const mapDispatchToProps = (dispatch) => ({
+  getDragons: (dragons) => dispatch(getDragons(dragons))
+})
 
-export default connect(
-  mapState,
-  mapDispatch
-)(AllDragons);
+export default connect(mapStateToProps, mapDispatchToProps)(AllDragons);

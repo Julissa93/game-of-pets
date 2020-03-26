@@ -29,6 +29,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DRAGONS:
       return { ...state, all: action.dragons, loading: false };
+    
     default:
       return state;
   }
