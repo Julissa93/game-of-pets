@@ -3878,8 +3878,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* 
   Trajectory for today's demo: 
-  * How to make AJAX calls with Redux? 
+  * How to make AJAX calls with Redux? We do that by using Thunk Middleware!
   * How can we modularize our Redux store in a large scale application? 
+    * combineReducers - a helper function that allows us to split our reducers into multiple/separate reducers.
+      Each managing different slices of our state. 
+    * This function turns an object whose values are difference reducers into a single reducer.
   * Empty/Loading state pattern
 */
 
