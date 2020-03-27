@@ -3866,6 +3866,13 @@ var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* 
+  Trajectory for today: 
+  * How to make AJAX calls with Redux? 
+  * How can we modularize our Redux store in a large scale application? 
+  * Empty/Loading state pattern
+
+*/
 //action type
 var GET_DRAGONS = "GET_DRAGONS";
 var GET_WOLVES = 'GET_WOLVES';
@@ -40952,7 +40959,7 @@ var AllDragons = function (_React$Component) {
   }
 
   _createClass(AllDragons, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var _ref2, data;
@@ -40962,7 +40969,7 @@ var AllDragons = function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _axios2.default.get('/api/dragons');
+                return _axios2.default.get("/api/dragons");
 
               case 2:
                 _ref2 = _context.sent;
@@ -40971,7 +40978,7 @@ var AllDragons = function (_React$Component) {
                 this.props.getDragons(data);
 
               case 5:
-              case 'end':
+              case "end":
                 return _context.stop();
             }
           }
@@ -40985,28 +40992,28 @@ var AllDragons = function (_React$Component) {
       return componentDidMount;
     }()
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var dragons = this.props.dragons;
 
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-          'ul',
+          "ul",
           null,
           dragons.map(function (dragon) {
             return _react2.default.createElement(
-              'li',
+              "li",
               { key: dragon.id },
               _react2.default.createElement(
-                'h2',
+                "h2",
                 null,
-                '\uD83D\uDC09 Dragon: ',
+                "\uD83D\uDC09 Dragon: ",
                 dragon.name,
-                ' \uD83D\uDC09'
+                " \uD83D\uDC09"
               ),
-              _react2.default.createElement('img', { src: dragon.imageUrl, height: '400', width: '600' })
+              _react2.default.createElement("img", { src: dragon.imageUrl, height: "400", width: "600" })
             );
           })
         )
@@ -42743,7 +42750,7 @@ var AllWolves = function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _axios2.default.get('/api/wolves');
+                return _axios2.default.get("/api/wolves");
 
               case 2:
                 _ref2 = _context.sent;

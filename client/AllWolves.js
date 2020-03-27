@@ -1,12 +1,11 @@
 import React from "react";
-import { getWolves } from './store'
+import { getWolves } from "./store";
 import axios from "axios";
 import { connect } from "react-redux";
 
 class AllWolves extends React.Component {
-
   async componentDidMount() {
-    const { data } = await axios.get('/api/wolves');
+    const { data } = await axios.get("/api/wolves");
     this.props.getWolves(data);
   }
 
@@ -29,10 +28,10 @@ class AllWolves extends React.Component {
 
 const mapStateToProps = state => ({
   wolves: state.wolves
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-  getWolves: (wolves) => dispatch(getWolves(wolves))
-})
+  getWolves: wolves => dispatch(getWolves(wolves))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllWolves);

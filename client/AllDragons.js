@@ -1,12 +1,11 @@
 import React from "react";
-import { getDragons } from './store';
-import axios from 'axios';
+import { getDragons } from "./store";
+import axios from "axios";
 import { connect } from "react-redux";
 
 class AllDragons extends React.Component {
-
   async componentDidMount() {
-    const { data } = await axios.get('/api/dragons');
+    const { data } = await axios.get("/api/dragons");
     this.props.getDragons(data);
   }
 
@@ -27,12 +26,12 @@ class AllDragons extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   dragons: state.dragons
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  getDragons: (dragons) => dispatch(getDragons(dragons))
-})
+const mapDispatchToProps = dispatch => ({
+  getDragons: dragons => dispatch(getDragons(dragons))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllDragons);

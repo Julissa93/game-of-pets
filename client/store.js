@@ -2,6 +2,13 @@
 import { createStore, applyMiddleware } from "redux";
 import loggerMiddleware from "redux-logger";
 
+/* 
+  Trajectory for today: 
+  * How to make AJAX calls with Redux? 
+  * How can we modularize our Redux store in a large scale application? 
+  * Empty/Loading state pattern
+
+*/
 //action type
 const GET_DRAGONS = "GET_DRAGONS";
 const GET_WOLVES = 'GET_WOLVES';
