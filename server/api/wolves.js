@@ -3,8 +3,8 @@ const Direwolf = require('../db/Direwolf');
 
 router.get('/', async (req, res, next) => {
     try {
-        let direwolves = await Direwolf.findAll();
-        res.json(direwolves);
+        const wolves = await Direwolf.findAll();
+        res.json(wolves);
     } catch (err) {
         next(err);
     }

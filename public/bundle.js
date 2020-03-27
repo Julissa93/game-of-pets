@@ -7988,11 +7988,11 @@ var getDragonsFromServer = function getDragonsFromServer(dragons) {
 };
 
 //thunky thunks
-
 var fetchDragons = exports.fetchDragons = function fetchDragons() {
   return function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-      var res, action;
+      var _ref2, data, action;
+
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -8001,14 +8001,16 @@ var fetchDragons = exports.fetchDragons = function fetchDragons() {
               return _axios2.default.get("/api/dragons");
 
             case 2:
-              res = _context.sent;
-              action = getDragonsFromServer(res.data);
+              _ref2 = _context.sent;
+              data = _ref2.data;
+              action = getDragonsFromServer(data);
 
-              setTimeout(function () {
+              dispatch(action);
+              /*setTimeout(() => {
                 dispatch(action);
-              }, 3000);
+              }, 3000);*/
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -8326,7 +8328,7 @@ module.exports = Cancel;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.fetchDirewolves = undefined;
+exports.fetchWolves = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -8339,35 +8341,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 //action type
-var GET_DIREWOLVES = 'GET_DIREWOLVES';
+var GET_WOLVES = 'GET_WOLVES';
 
 //action creator
-var getDirewolvesFromServer = function getDirewolvesFromServer(direwolves) {
+var getWolvesFromServer = function getWolvesFromServer(wolves) {
     return {
-        type: GET_DIREWOLVES,
-        direwolves: direwolves
+        type: GET_WOLVES,
+        wolves: wolves
     };
 };
 
 //thunky thunk
-var fetchDirewolves = exports.fetchDirewolves = function fetchDirewolves() {
+var fetchWolves = exports.fetchWolves = function fetchWolves() {
     return function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-            var res, action;
+            var _ref2, data, action;
+
             return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
                             _context.next = 2;
-                            return _axios2.default.get('/api/direwolves');
+                            return _axios2.default.get('/api/wolves');
 
                         case 2:
-                            res = _context.sent;
-                            action = getDirewolvesFromServer(res.data);
+                            _ref2 = _context.sent;
+                            data = _ref2.data;
+                            action = getWolvesFromServer(data);
 
                             dispatch(action);
 
-                        case 5:
+                        case 6:
                         case 'end':
                             return _context.stop();
                     }
@@ -8392,8 +8396,8 @@ var reducer = function reducer() {
     var action = arguments[1];
 
     switch (action.type) {
-        case GET_DIREWOLVES:
-            return _extends({}, state, { all: action.direwolves, loading: false });
+        case GET_WOLVES:
+            return _extends({}, state, { all: action.wolves, loading: false });
         default:
             return state;
     }
@@ -38761,7 +38765,7 @@ var Main = function (_React$Component) {
           _react2.default.createElement("br", null),
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: "/direwolves" },
+            { to: "/wolves" },
             "Show us the direwolves!"
           ),
           _react2.default.createElement(
@@ -38769,7 +38773,7 @@ var Main = function (_React$Component) {
             null,
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _AllDragons2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dragons", component: _AllDragons2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/direwolves", component: _AllWolves2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/wolves", component: _AllWolves2.default })
           )
         )
       );
@@ -42776,7 +42780,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(107);
 
-var _direwolfReducer = __webpack_require__(164);
+var _wolfReducer = __webpack_require__(164);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42798,12 +42802,13 @@ var AllWolves = function (_React$Component) {
   _createClass(AllWolves, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchDirewolves();
+      this.props.fetchWolves();
     }
   }, {
     key: "render",
     value: function render() {
-      var wolves = this.props.direwolves;
+      var wolves = this.props.wolves;
+
       if (this.props.loading) return _react2.default.createElement(
         "h1",
         null,
@@ -42838,15 +42843,15 @@ var AllWolves = function (_React$Component) {
 
 var mapState = function mapState(state) {
   return {
-    direwolves: state.direwolves.all,
-    loading: state.direwolves.loading
+    wolves: state.wolves.all,
+    loading: state.wolves.loading
   };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
-    fetchDirewolves: function fetchDirewolves() {
-      return dispatch((0, _direwolfReducer.fetchDirewolves)());
+    fetchWolves: function fetchWolves() {
+      return dispatch((0, _wolfReducer.fetchWolves)());
     }
   };
 };
@@ -42874,9 +42879,9 @@ var _reduxLogger = __webpack_require__(432);
 
 var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-var _direwolfReducer = __webpack_require__(164);
+var _wolfReducer = __webpack_require__(164);
 
-var _direwolfReducer2 = _interopRequireDefault(_direwolfReducer);
+var _wolfReducer2 = _interopRequireDefault(_wolfReducer);
 
 var _dragonReducer = __webpack_require__(157);
 
@@ -42886,7 +42891,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var rootReducer = (0, _redux.combineReducers)({
   dragons: _dragonReducer2.default,
-  direwolves: _direwolfReducer2.default
+  wolves: _wolfReducer2.default
 }); /* eslint-disable default-case */
 
 

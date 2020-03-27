@@ -3,7 +3,7 @@ const Dragon = require('../db/Dragon');
 
 router.get('/', async (req, res, next) => {
     try {
-        let dragons = await Dragon.findAll();
+        const dragons = await Dragon.findAll();
         res.json(dragons);
     } catch (err) {
         next(err);

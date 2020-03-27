@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import axios from 'axios';
 //action types
 const GET_DRAGONS = "GET_DRAGONS";
 
@@ -10,13 +9,13 @@ const getDragonsFromServer = dragons => ({
 });
 
 //thunky thunks
-
 export const fetchDragons = () => async dispatch => {
-  const res = await axios.get("/api/dragons");
-  const action = getDragonsFromServer(res.data);
-  setTimeout(() => {
+  const { data } = await axios.get("/api/dragons");
+  const action = getDragonsFromServer(data);
+  dispatch(action);
+  /*setTimeout(() => {
     dispatch(action);
-  }, 3000);
+  }, 3000);*/
   
 };
 

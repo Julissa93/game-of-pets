@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchDirewolves } from "./reducers/direwolfReducer";
+import { fetchWolves } from "./reducers/wolfReducer";
 
 class AllWolves extends React.Component {
 
  componentDidMount() {
-    this.props.fetchDirewolves();
+    this.props.fetchWolves();
   }
 
   render() {
-    let wolves = this.props.direwolves;
+    const { wolves } = this.props;
     if (this.props.loading) return <h1>...Loading!!!</h1>
     return (
       <div>
@@ -28,14 +28,14 @@ class AllWolves extends React.Component {
 
 const mapState = state => {
   return {
-    direwolves: state.direwolves.all,
-    loading: state.direwolves.loading
+    wolves: state.wolves.all,
+    loading: state.wolves.loading
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    fetchDirewolves: () => dispatch(fetchDirewolves())
+    fetchWolves: () => dispatch(fetchWolves())
   };
 };
 

@@ -2,12 +2,12 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
 import loggerMiddleware from "redux-logger";
-import direwolfReducer from './reducers/direwolfReducer';
-import dragonReducer from './reducers/dragonReducer'
+import wolfReducer from './reducers/wolfReducer';
+import dragonReducer from './reducers/dragonReducer';
 
 const rootReducer = combineReducers({
   dragons: dragonReducer,
-  direwolves: direwolfReducer
+  wolves: wolfReducer
 })
 
 const store = createStore(
