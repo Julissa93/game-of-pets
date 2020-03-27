@@ -1,38 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
 
-//action types
+//action type
 const GET_DRAGONS = "GET_DRAGONS";
 
-//action creator
-const getDragonsFromServer = dragons => ({
+//action creators
+export const getDragons = dragons => ({
   type: GET_DRAGONS,
   dragons
 });
 
-//thunky thunks
-
-export const fetchDragons = () => async dispatch => {
-  const res = await axios.get("/api/dragons");
-  const action = getDragonsFromServer(res.data);
-  setTimeout(() => {
-    dispatch(action);
-  }, 3000);
-  
+//thunk creator
+export const fetchDragonsFromServer = () => {
+  return async dispatch => {
+    const { data } = await axios.get("/api/dragons");
+    setTimeout(() => dispatch(getDragons(data)), 3000);
+  };
 };
 
 const initialState = {
   all: [],
   loading: true
-};
+}
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch(action.type) {
     case GET_DRAGONS:
-      return { ...state, all: action.dragons, loading: false };
-    
+      return {...state, all: action.dragons, loading: false};
     default:
       return state;
   }
-};
+}
 
 export default reducer;

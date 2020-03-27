@@ -1,34 +1,36 @@
 import axios from 'axios';
 
 //action type
-const GET_DIREWOLVES = 'GET_DIREWOLVES';
+const GET_WOLVES = "GET_WOLVES";
 
-//action creator
-const getDirewolvesFromServer = direwolves => ({
-    type: GET_DIREWOLVES,
-    direwolves
+//action creators
+export const getWolves = wolves => ({
+  type: GET_WOLVES,
+  wolves
 });
 
-//thunky thunk
-export const fetchDirewolves = () => async dispatch => {
-    const res = await axios.get('/api/direwolves');
-    const action = getDirewolvesFromServer(res.data);
-    dispatch(action);
+
+export const fetchWolvesFromServer = () => {
+  return async dispatch => {
+    const { data } = await axios.get("/api/wolves");
+    setTimeout( () => dispatch(getWolves(data)), 3000);
+   
+  }
 }
 
 const initialState = {
-    all: [],
-    loading: true,
-    selected: {}
+  all: [],
+  loading: true
 }
 
+//reducer
 const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case GET_DIREWOLVES:
-            return {...state, all: action.direwolves, loading: false}
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case GET_WOLVES:
+      return {...state, all: action.wolves, loading: false};
+    default:
+        return state;
+  }
+};
 
 export default reducer;

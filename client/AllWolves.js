@@ -1,16 +1,24 @@
-import React from "react";
-import { fetchWolvesFromServer } from "./store";
+import React, { Component } from "react";
+import { fetchWolvesFromServer } from "./reducers/wolfReducer";
 import axios from "axios";
 import { connect } from "react-redux";
+const loadingImage = 'https://derpicdn.net/img/view/2017/6/25/1471445.gif';
 
-class AllWolves extends React.Component {
-  async componentDidMount() {
-    const { data } = await axios.get("/api/wolves");
-    this.props.getWolves(data);
+class AllWolves extends Component {
+  componentDidMount() {
+    this.props.getWolves();
   }
 
   render() {
     const { wolves } = this.props;
+    if (this.props.loading)
+      return (
+        <div>
+          <h3>Loading...</h3>
+          <img src={loadingImage} className='loading' />
+        </div>
+      );
+
     return (
       <div>
         <ul>
@@ -27,7 +35,8 @@ class AllWolves extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  wolves: state.wolves
+  wolves: state.wolves.all,
+  loading: state.wolves.loading
 });
 
 const mapDispatchToProps = dispatch => ({

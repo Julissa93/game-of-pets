@@ -1,14 +1,23 @@
-import React from "react";
-import { fetchDragonsFromServer } from "./store";
+import React, { Component } from "react";
+import { fetchDragonsFromServer } from "./reducers/dragonReducer";
 import { connect } from "react-redux";
+const loadingImage = 'https://derpicdn.net/img/view/2017/6/25/1471445.gif';
 
-class AllDragons extends React.Component {
+class AllDragons extends Component {
   componentDidMount() {
     this.props.getDragons();
   }
 
   render() {
     const { dragons } = this.props;
+    if (this.props.loading)
+      return (
+        <div>
+          <h3>Loading...</h3>
+          <img src={loadingImage} className='loading'/>
+        </div>
+      );
+
     return (
       <div>
         <ul>
@@ -25,7 +34,8 @@ class AllDragons extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  dragons: state.dragons
+  dragons: state.dragons.all,
+  loading: state.dragons.loading
 });
 
 const mapDispatchToProps = dispatch => ({
