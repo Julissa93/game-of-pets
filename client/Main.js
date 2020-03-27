@@ -2,8 +2,12 @@ import React from "react";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AllDragons from "./AllDragons";
 import AllWolves from "./AllWolves";
+import { fetchWolvesFromServer } from "./store";
+import { fetchDragonsFromServer } from "./store";
+import { connect } from "react-redux";
 
-export default class Main extends React.Component {
+class Main extends React.Component {
+
   render() {
     return (
       <Router>
@@ -28,3 +32,10 @@ export default class Main extends React.Component {
     );
   }
 }
+
+const mapDispatch = dispatch => ({
+  getWolves: () => dispatch(fetchWolvesFromServer()),
+  getDragons: () => dispatch(fetchDragonsFromServer())
+})
+
+export default connect(null, mapDispatch)(Main);

@@ -1,5 +1,5 @@
 import React from "react";
-import { getWolves } from "./store";
+import { fetchWolvesFromServer } from "./store";
 import axios from "axios";
 import { connect } from "react-redux";
 
@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getWolves: wolves => dispatch(getWolves(wolves))
+  getWolves: () => dispatch(fetchWolvesFromServer())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllWolves);
